@@ -1,0 +1,5 @@
+python-telegram-bot
+bip-utils
+hdwallet
+requests
+aiohttp
