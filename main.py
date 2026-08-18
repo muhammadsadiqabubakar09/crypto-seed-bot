@@ -4,7 +4,7 @@ from threading import Thread
 from flask import Flask
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from bip_utils import Bip39MnemonicGenerator, Bip39WordsNum
+from mnemonic import Mnemonic
 
 app_web = Flask(__name__)
 
@@ -16,13 +16,16 @@ def run_flask():
     port = int(os.environ.get("PORT", 8080))
     app_web.run(host='0.0.0.0', port=port)
 
-TOKEN = "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
+# Replace with your actual Telegram Bot Token
+TOKEN "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8""
+
+mnemo = Mnemonic("english")
 
 def generate_mnemonic(words_count: int) -> str:
     if words_count == 12:
-        return Bip39MnemonicGenerator().FromWordsNumber(Bip39WordsNum.WORDS_NUM_12)
+        return mnemo.generate(strength=128)
     elif words_count == 24:
-        return Bip39MnemonicGenerator().FromWordsNumber(Bip39WordsNum.WORDS_NUM_24)
+        return mnemo.generate(strength=256)
     return ""
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
