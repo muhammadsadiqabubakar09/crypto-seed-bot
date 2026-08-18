@@ -3,3 +3,4 @@ bip-utils
 hdwallet
 requests
 aiohttp
+flask
