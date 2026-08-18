@@ -17,7 +17,7 @@ def run_flask():
     app_web.run(host='0.0.0.0', port=port)
 
 # Replace with your actual Telegram Bot Token
-TOKEN "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8""
+TOKEN = "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
 
 mnemo = Mnemonic("english")
 
