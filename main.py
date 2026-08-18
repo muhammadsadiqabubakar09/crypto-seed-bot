@@ -1,12 +1,11 @@
 import os
 import logging
-from thread import Thread
+from threading import Thread
 from flask import Flask
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from bip_utils import Bip39MnemonicGenerator, Bip39WordsNum
 
-# Web server don Render Free Web Service
 app_web = Flask(__name__)
 
 @app_web.route('/')
@@ -17,9 +16,7 @@ def run_flask():
     port = int(os.environ.get("PORT", 8080))
     app_web.run(host='0.0.0.0', port=port)
 
-# Replace with your actual Telegram Bot 
-Token
- "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
+TOKEN = "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
 
 def generate_mnemonic(words_count: int) -> str:
     if words_count == 12:
@@ -48,10 +45,8 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(response, parse_mode="Markdown")
 
 if __name__ == '__main__':
-    # Fara Flask a background
     Thread(target=run_flask).start()
     
-    # fara Telegram Bot
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_buttons))
