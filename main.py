@@ -17,8 +17,9 @@ def run_flask():
     port = int(os.environ.get("PORT", 8080))
     app_web.run(host='0.0.0.0', port=port)
 
-# Saka Telegram Bot Token dinka
-TOKEN = "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
+# Replace with your actual Telegram Bot 
+Token
+ "8824351762:AAFxLiRKCr1ZVPxL8_b8reHTyZyhjmHu1b8"
 
 def generate_mnemonic(words_count: int) -> str:
     if words_count == 12:
@@ -50,7 +51,7 @@ if __name__ == '__main__':
     # Fara Flask a background
     Thread(target=run_flask).start()
     
-    # Fara Telegram Bot
+    # fara Telegram Bot
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_buttons))
