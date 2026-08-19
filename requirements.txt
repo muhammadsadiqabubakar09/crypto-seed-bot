@@ -4,5 +4,4 @@ pandas
 ta
 requests
 flask
-numpy
-
+numpy 
